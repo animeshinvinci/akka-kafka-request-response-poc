@@ -19,7 +19,7 @@ case class Command(requestPayload: RequestPayload)
 class KafkaProducer (implicit as: ActorSystem, mat: Materializer, ec: ExecutionContext) {
 
   val producerSettings = ProducerSettings(as, new ByteArraySerializer, new StringSerializer)
-    .withBootstrapServers("kafka:9092")
+    .withBootstrapServers("localhost:9092")
 
   def sendToKafka(data: String) : Future[Sent] = {
     val done = Source.single(data)

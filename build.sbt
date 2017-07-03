@@ -14,7 +14,6 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "de.heikoseeberger"         %% "akka-http-circe"        % "1.10.0",
-  "io.circe"                  %% "circe-core"             % "0.4.1",
   "io.circe"                  %% "circe-generic"          % "0.4.1",
   "io.circe"                  %% "circe-parser"           % "0.4.1",
   "com.typesafe.akka"         %% "akka-stream-kafka"      % "0.13",

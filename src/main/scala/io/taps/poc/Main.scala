@@ -32,9 +32,8 @@ object Main extends App{
   val asyncActor = system.actorOf(AsyncServiceActor.props(producer))
   implicit val timeout =  Timeout(5 seconds)
 
-  var requestPayload = RequestPayload(name = "animesh")
+  var requestPayload = RequestPayload(name = "test-messg-9009")
   val res :Future[ResponsePayload] = (asyncActor ? Command(requestPayload)).mapTo[ResponsePayload]
-
 
 
 

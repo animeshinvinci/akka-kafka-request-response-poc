@@ -25,7 +25,7 @@ class KafkaConsumerActor (implicit as: ActorSystem,
 
   override def preStart(): Unit = {
     val consumerSettings = ConsumerSettings(as, new ByteArrayDeserializer, new StringDeserializer)
-      .withBootstrapServers("kafka:9092")
+      .withBootstrapServers("localhost:9092")
       .withGroupId("cqrsgroup")
       .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 
