@@ -15,7 +15,7 @@ class RequestResponseActor (producer: KafkaProducer, origin: ActorRef) extends A
       producer.sendToKafka(msg.noSpaces)
   }
 
-  def responseHandler: Receive ={
+  def responseHandler: Receive = {
     case resp: ResponsePayload =>
       log.info(s"Got Response from Kafka  received: $resp, sending to ${origin}")
       origin ! resp
