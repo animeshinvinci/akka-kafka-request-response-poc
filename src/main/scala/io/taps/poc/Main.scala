@@ -4,7 +4,9 @@ import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
 import akka.pattern.ask
+import akka.stream.actor.ActorSubscriberMessage.OnComplete
 import akka.util.Timeout
+
 import scala.concurrent.Future
 import scala.concurrent.duration._
 import scala.concurrent.Await
@@ -32,16 +34,18 @@ object Main extends App{
   // service message passing actor
 
   val asyncActor = system.actorOf(AsyncServiceActor.props(producer))
-  implicit val timeout =  Timeout(1 seconds)
 
 
   // http  request-
 
-  var requestPayload = RequestPayload(name = "test-messg-xyz99880000")
+  var requestPayload = RequestPayload(name = "test-messg88777-xyz99880000")
+  implicit val timeout =  Timeout(10000 seconds)
 
-  val resFuture :Future[ResponsePayload] = (asyncActor ? Command(requestPayload)).mapTo[ResponsePayload]
-   // res - send as response
-  println(resFuture)
+  val resFuture  = (asyncActor ? Command(requestPayload)).mapTo[ResponsePayload]
+  val result2 = Await.result(resFuture,timeout.duration)
+
+  // res - send as response
+  println(result2)
 
 
 }

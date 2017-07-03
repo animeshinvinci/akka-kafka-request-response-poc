@@ -13,6 +13,8 @@ class RequestResponseActor (producer: KafkaProducer, origin: ActorRef) extends A
       context.become(responseHandler)
       val msg = Message(self.path.toStringWithAddress(self.path.address), ResponsePayload(s.name)).asJson
       producer.sendToKafka(msg.noSpaces)
+      log.info(s"Send payload kafka")
+
   }
 
   def responseHandler: Receive = {

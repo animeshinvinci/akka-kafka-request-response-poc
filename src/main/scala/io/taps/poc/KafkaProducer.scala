@@ -29,7 +29,7 @@ class KafkaProducer (implicit as: ActorSystem, mat: Materializer, ec: ExecutionC
       .runWith(Producer.plainSink(producerSettings))
 
     done.map { d =>
-      as.log.info(s"sending to kafka  ${Sent(data)}, $d")
+      as.log.info(s"sending to ====== kafka  ${Sent(data)}, $d")
       Sent(data)
     }
   }
