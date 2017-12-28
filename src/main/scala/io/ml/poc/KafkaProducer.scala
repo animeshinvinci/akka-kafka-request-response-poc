@@ -1,4 +1,4 @@
-package io.taps.poc
+package io.ml.poc
 
 import akka.actor.ActorSystem
 import akka.kafka.ProducerSettings
@@ -28,10 +28,13 @@ class KafkaProducer (implicit as: ActorSystem, mat: Materializer, ec: ExecutionC
       }
       .runWith(Producer.plainSink(producerSettings))
 
+
     done.map { d =>
       as.log.info(s"sending to ====== kafka  ${Sent(data)}, $d")
       Sent(data)
     }
+
+
   }
 
 }

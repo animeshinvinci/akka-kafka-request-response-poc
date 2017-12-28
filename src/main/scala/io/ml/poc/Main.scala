@@ -1,15 +1,13 @@
-package io.taps.poc
+package io.ml.poc
 
 import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
-import com.typesafe.config.ConfigFactory
 import akka.pattern.ask
-import akka.stream.actor.ActorSubscriberMessage.OnComplete
+import akka.stream.ActorMaterializer
 import akka.util.Timeout
+import com.typesafe.config.ConfigFactory
 
-import scala.concurrent.Future
-import scala.concurrent.duration._
 import scala.concurrent.Await
+import scala.concurrent.duration._
 
 /**
   * Created by animesh on 6/25/17.

@@ -1,17 +1,16 @@
-package io.taps.poc
+package io.ml.poc
 
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
 import akka.kafka.scaladsl.Consumer
 import akka.kafka.{ConsumerSettings, Subscriptions}
 import akka.stream.Materializer
 import akka.stream.scaladsl.Sink
+import io.circe.generic.auto._
+import io.circe.parser._
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.{ByteArrayDeserializer, StringDeserializer}
 
 import scala.concurrent.{ExecutionContext, Future}
-
-import io.circe.parser._
-import io.circe.generic.auto._
 
 /**
   * Created by animesh on 6/25/17.
